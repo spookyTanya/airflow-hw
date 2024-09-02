@@ -1,0 +1,45 @@
+[2024-09-01T15:59:41.217+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-01T15:59:41.237+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_airbnb_etl.write_data manual__2024-09-01T15:59:21+00:00 [queued]>
+[2024-09-01T15:59:41.246+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_airbnb_etl.write_data manual__2024-09-01T15:59:21+00:00 [queued]>
+[2024-09-01T15:59:41.247+0000] {taskinstance.py:2856} INFO - Starting attempt 1 of 1
+[2024-09-01T15:59:41.262+0000] {taskinstance.py:2879} INFO - Executing <Task(PostgresOperator): write_data> on 2024-09-01 15:59:21+00:00
+[2024-09-01T15:59:41.273+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=743) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-09-01T15:59:41.275+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'nyc_airbnb_etl', 'write_data', 'manual__2024-09-01T15:59:21+00:00', '--job-id', '235', '--raw', '--subdir', 'DAGS_FOLDER/nyc_airbnb_etl.py', '--cfg-path', '/tmp/tmp9te8vzlt']
+[2024-09-01T15:59:41.276+0000] {standard_task_runner.py:72} INFO - Started process 745 to run task
+[2024-09-01T15:59:41.276+0000] {standard_task_runner.py:105} INFO - Job 235: Subtask write_data
+[2024-09-01T15:59:41.340+0000] {task_command.py:467} INFO - Running <TaskInstance: nyc_airbnb_etl.write_data manual__2024-09-01T15:59:21+00:00 [running]> on host b74353bc56c3
+[2024-09-01T15:59:41.446+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='nyc_airbnb_etl' AIRFLOW_CTX_TASK_ID='write_data' AIRFLOW_CTX_EXECUTION_DATE='2024-09-01T15:59:21+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-09-01T15:59:21+00:00'
+[2024-09-01T15:59:41.448+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2024-09-01T15:59:41.448+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2024-09-01T15:59:41.449+0000] {logging_mixin.py:190} INFO - Current task name:write_data state:running start_date:2024-09-01 15:59:41.237812+00:00
+[2024-09-01T15:59:41.449+0000] {logging_mixin.py:190} INFO - Dag name:nyc_airbnb_etl and current dag run status:running
+[2024-09-01T15:59:41.449+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-01T15:59:41.451+0000] {sql.py:282} INFO - Executing: 
+            TRUNCATE TABLE airbnb_listings;
+            COPY airbnb_listings FROM '/transformed/transformed/ab_nyc.csv'
+            DELIMITER ','
+            CSV HEADER;
+        
+[2024-09-01T15:59:41.460+0000] {base.py:84} INFO - Retrieving connection 'test-connection'
+[2024-09-01T15:59:41.469+0000] {base.py:84} INFO - Retrieving connection 'test-connection'
+[2024-09-01T15:59:41.473+0000] {sql.py:509} INFO - Running statement: 
+            TRUNCATE TABLE airbnb_listings;
+            COPY airbnb_listings FROM '/transformed/transformed/ab_nyc.csv'
+            DELIMITER ','
+            CSV HEADER;
+        , parameters: None
+[2024-09-01T15:59:41.880+0000] {sql.py:518} INFO - Rows affected: 48884
+[2024-09-01T15:59:41.933+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-01T15:59:41.934+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=nyc_airbnb_etl, task_id=write_data, run_id=manual__2024-09-01T15:59:21+00:00, execution_date=20240901T155921, start_date=20240901T155941, end_date=20240901T155941
+[2024-09-01T15:59:41.947+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2024-09-01T15:59:41.948+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2024-09-01T15:59:41.948+0000] {logging_mixin.py:190} INFO - Dag name:nyc_airbnb_etl queued_at:2024-09-01 15:59:23.404672+00:00
+[2024-09-01T15:59:41.948+0000] {logging_mixin.py:190} INFO - Task hostname:b74353bc56c3 operator:PostgresOperator
+[2024-09-01T15:59:41.975+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 0
+[2024-09-01T15:59:41.986+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1378: AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `***.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+  result = cls.__new__(cls)
+
+[2024-09-01T15:59:41.999+0000] {taskinstance.py:3891} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-09-01T15:59:42.002+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

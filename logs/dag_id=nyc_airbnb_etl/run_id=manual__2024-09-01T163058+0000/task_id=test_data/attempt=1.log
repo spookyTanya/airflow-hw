@@ -1,0 +1,39 @@
+[2024-09-01T16:31:24.900+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-01T16:31:24.936+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_airbnb_etl.test_data manual__2024-09-01T16:30:58+00:00 [queued]>
+[2024-09-01T16:31:24.953+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_airbnb_etl.test_data manual__2024-09-01T16:30:58+00:00 [queued]>
+[2024-09-01T16:31:24.955+0000] {taskinstance.py:2856} INFO - Starting attempt 1 of 1
+[2024-09-01T16:31:24.985+0000] {taskinstance.py:2879} INFO - Executing <Task(BranchPythonOperator): test_data> on 2024-09-01 16:30:58+00:00
+[2024-09-01T16:31:25.000+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1163) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-09-01T16:31:25.004+0000] {standard_task_runner.py:72} INFO - Started process 1165 to run task
+[2024-09-01T16:31:25.003+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'nyc_airbnb_etl', 'test_data', 'manual__2024-09-01T16:30:58+00:00', '--job-id', '246', '--raw', '--subdir', 'DAGS_FOLDER/nyc_airbnb_etl.py', '--cfg-path', '/tmp/tmph7zpogc4']
+[2024-09-01T16:31:25.005+0000] {standard_task_runner.py:105} INFO - Job 246: Subtask test_data
+[2024-09-01T16:31:25.086+0000] {task_command.py:467} INFO - Running <TaskInstance: nyc_airbnb_etl.test_data manual__2024-09-01T16:30:58+00:00 [running]> on host b74353bc56c3
+[2024-09-01T16:31:25.270+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='nyc_airbnb_etl' AIRFLOW_CTX_TASK_ID='test_data' AIRFLOW_CTX_EXECUTION_DATE='2024-09-01T16:30:58+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-09-01T16:30:58+00:00'
+[2024-09-01T16:31:25.273+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2024-09-01T16:31:25.274+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2024-09-01T16:31:25.275+0000] {logging_mixin.py:190} INFO - Current task name:test_data state:running start_date:2024-09-01 16:31:24.937936+00:00
+[2024-09-01T16:31:25.276+0000] {logging_mixin.py:190} INFO - Dag name:nyc_airbnb_etl and current dag run status:running
+[2024-09-01T16:31:25.276+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-01T16:31:25.278+0000] {baseoperator.py:405} WARNING - BranchPythonOperator.execute cannot be called outside TaskInstance!
+[2024-09-01T16:31:25.297+0000] {base.py:84} INFO - Retrieving connection 'test-connection'
+[2024-09-01T16:31:25.304+0000] {sql.py:509} INFO - Running statement: SELECT count(*) FROM airbnb_listings, parameters: None
+[2024-09-01T16:31:25.319+0000] {sql.py:518} INFO - Rows affected: 1
+[2024-09-01T16:31:25.705+0000] {base.py:84} INFO - Retrieving connection 'test-connection'
+[2024-09-01T16:31:25.713+0000] {sql.py:509} INFO - Running statement: SELECT COUNT(*) FROM airbnb_listings WHERE price IS NULL OR minimum_nights IS NULL OR availability_365 IS NULL, parameters: None
+[2024-09-01T16:31:25.740+0000] {sql.py:518} INFO - Rows affected: 1
+[2024-09-01T16:31:25.742+0000] {logging_mixin.py:190} INFO - [(0,)]
+[2024-09-01T16:31:25.749+0000] {python.py:240} INFO - Done. Returned value was: log_success_task
+[2024-09-01T16:31:25.750+0000] {branch.py:38} INFO - Branch into log_success_task
+[2024-09-01T16:31:25.752+0000] {skipmixin.py:230} INFO - Following branch ('log_success_task',)
+[2024-09-01T16:31:25.788+0000] {skipmixin.py:278} INFO - Skipping tasks [('log_error_task', -1)]
+[2024-09-01T16:31:25.856+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-01T16:31:25.857+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=nyc_airbnb_etl, task_id=test_data, run_id=manual__2024-09-01T16:30:58+00:00, execution_date=20240901T163058, start_date=20240901T163124, end_date=20240901T163125
+[2024-09-01T16:31:25.876+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2024-09-01T16:31:25.877+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2024-09-01T16:31:25.879+0000] {logging_mixin.py:190} INFO - Dag name:nyc_airbnb_etl queued_at:2024-09-01 16:31:00.350292+00:00
+[2024-09-01T16:31:25.880+0000] {logging_mixin.py:190} INFO - Task hostname:b74353bc56c3 operator:BranchPythonOperator
+[2024-09-01T16:31:25.908+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 0
+[2024-09-01T16:31:25.959+0000] {taskinstance.py:3891} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-09-01T16:31:25.962+0000] {local_task_job_runner.py:240} INFO - ::endgroup::
